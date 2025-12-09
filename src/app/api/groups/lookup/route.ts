@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { eq, sql } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { group } from "@/lib/schema";
-import { eq, sql } from "drizzle-orm";
-import { headers } from "next/headers";
 
 export async function GET(request: Request) {
   try {

@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Plus, Users, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { GroupCard } from "@/components/groups/group-card";
-import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
-import { EmptyState } from "@/components/ui/empty-state";
-import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
+import { GroupCard } from "@/components/groups/group-card";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
+import { useSession } from "@/lib/auth-client";
 import type { Group } from "@/lib/types";
 
 interface GroupWithRole extends Group {

@@ -3,14 +3,14 @@
 import { useEffect, useState, use } from "react";
 import Link from "next/link";
 import { ArrowLeft, Lock, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
-import { EventForm } from "@/components/events/event-form";
 import { EventCard } from "@/components/events/event-card";
+import { EventForm } from "@/components/events/event-form";
 import { RSVPButtons } from "@/components/events/rsvp-buttons";
 import { RSVPList } from "@/components/events/rsvp-list";
 import { GroupActivityFeed } from "@/components/groups/group-activity-feed";
+import { Button } from "@/components/ui/button";
+import { useSession } from "@/lib/auth-client";
 
 type RSVPStatus = "attending" | "not_attending" | "maybe";
 

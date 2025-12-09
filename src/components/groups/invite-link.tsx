@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Check, Copy, RefreshCw, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,11 +24,7 @@ export function InviteLink({ groupId, isAdmin }: InviteLinkProps) {
   const [regenerating, setRegenerating] = useState(false);
   const [copied, setCopied] = useState<"code" | "url" | null>(null);
 
-  useEffect(() => {
-    fetchInviteCode();
-  }, [groupId]);
-
-  async function fetchInviteCode() {
+  const fetchInviteCode = useCallback(async () => {
     try {
       const res = await fetch(`/api/groups/${groupId}/invite`);
       if (res.ok) {
@@ -41,7 +37,11 @@ export function InviteLink({ groupId, isAdmin }: InviteLinkProps) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [groupId]);
+
+  useEffect(() => {
+    fetchInviteCode();
+  }, [fetchInviteCode]);
 
   async function regenerateCode() {
     setRegenerating(true);

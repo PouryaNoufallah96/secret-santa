@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, MapPin, Video, FileText, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { formatExchangeDate } from "@/lib/secret-santa";
 
 interface EventDetails {

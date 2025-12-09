@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { eq, and, desc } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { groupActivity, groupMember, user } from "@/lib/schema";
-import { eq, and, desc } from "drizzle-orm";
-import { headers } from "next/headers";
 
 // Helper to check if user is a member of the group
 async function getMemberRole(groupId: string, userId: string) {

@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+import { and, eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import {
@@ -13,8 +15,6 @@ import {
   generateAssignments,
   hasExchangeDatePassed,
 } from "@/lib/secret-santa";
-import { and, eq } from "drizzle-orm";
-import { headers } from "next/headers";
 
 export async function POST(
   _request: Request,

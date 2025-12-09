@@ -59,25 +59,6 @@ export function Snowfall({
       opacity: { min: 0.4, max: 0.8 },
     };
 
-    // Initialize snowflakes
-    for (let i = 0; i < config.count; i++) {
-      snowflakes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius:
-          Math.random() * (config.radius.max - config.radius.min) +
-          config.radius.min,
-        speed:
-          Math.random() * (config.speed.max - config.speed.min) +
-          config.speed.min,
-        wind:
-          Math.random() * (config.wind.max - config.wind.min) + config.wind.min,
-        opacity:
-          Math.random() * (config.opacity.max - config.opacity.min) +
-          config.opacity.min,
-      });
-    }
-
     let animationId: number;
 
     const animate = () => {
@@ -108,8 +89,29 @@ export function Snowfall({
       canvas.height = window.innerHeight;
     };
 
+    // Set canvas size BEFORE initializing snowflakes
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    // Initialize snowflakes after canvas has proper dimensions
+    for (let i = 0; i < config.count; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius:
+          Math.random() * (config.radius.max - config.radius.min) +
+          config.radius.min,
+        speed:
+          Math.random() * (config.speed.max - config.speed.min) +
+          config.speed.min,
+        wind:
+          Math.random() * (config.wind.max - config.wind.min) + config.wind.min,
+        opacity:
+          Math.random() * (config.opacity.max - config.opacity.min) +
+          config.opacity.min,
+      });
+    }
+
     animate();
 
     return () => {

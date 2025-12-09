@@ -1,16 +1,16 @@
+import { headers } from "next/headers";
+import Link from "next/link";
+import { redirect, notFound } from "next/navigation";
+import { and, eq } from "drizzle-orm";
+import { ArrowLeft, Gift, DollarSign, Calendar } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { WishlistForm } from "@/components/wishlists/wishlist-form";
+import { WishlistList } from "@/components/wishlists/wishlist-list";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { wishlistItem, group, groupMember } from "@/lib/schema";
-import { and, eq } from "drizzle-orm";
-import { headers } from "next/headers";
-import { redirect, notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft, Gift, DollarSign, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { WishlistForm } from "@/components/wishlists/wishlist-form";
-import { WishlistList } from "@/components/wishlists/wishlist-list";
 import { formatPrice, formatExchangeDate } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
 
@@ -112,10 +112,10 @@ export default async function GroupWishlistPage({ params }: PageProps) {
                   Budget:{" "}
                   <span className="font-medium">
                     {groupData.budgetMin && groupData.budgetMax
-                      ? `${formatPrice(groupData.budgetMin * 100, currency)} - ${formatPrice(groupData.budgetMax * 100, currency)}`
+                      ? `${formatPrice(groupData.budgetMin, currency)} - ${formatPrice(groupData.budgetMax, currency)}`
                       : groupData.budgetMin
-                        ? `Min ${formatPrice(groupData.budgetMin * 100, currency)}`
-                        : `Max ${formatPrice(groupData.budgetMax! * 100, currency)}`}
+                        ? `Min ${formatPrice(groupData.budgetMin, currency)}`
+                        : `Max ${formatPrice(groupData.budgetMax!, currency)}`}
                   </span>
                 </span>
               </div>

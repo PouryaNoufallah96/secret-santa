@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Calendar, Users, Gift, Crown } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,8 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { formatPrice, formatShortDate, daysUntil } from "@/lib/secret-santa";
 import type { Group, Currency } from "@/lib/types";
 

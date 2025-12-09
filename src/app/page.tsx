@@ -10,9 +10,11 @@ import {
   ChevronRight,
   TreePine,
 } from "lucide-react";
+import { motion } from "motion/react";
+import { SignInButton } from "@/components/auth/sign-in-button";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Button } from "@/components/ui/button";
 import { Snowfall } from "@/components/ui/snowfall";
-import { SignInButton } from "@/components/auth/sign-in-button";
 import { useSession } from "@/lib/auth-client";
 
 interface FeatureCardProps {
@@ -57,9 +59,14 @@ export default function Home() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-christmas-red to-berry-red dark:from-night-sky dark:to-pine-dark">
+      <AuroraBackground className="min-h-[90vh]">
         <Snowfall />
-        <div className="container mx-auto px-4 py-20 text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          className="container mx-auto px-4 py-20 text-center relative z-10"
+        >
           <div className="flex items-center justify-center gap-3 mb-6">
             <TreePine className="h-12 w-12 text-white/90" />
             <Gift className="h-16 w-16 text-christmas-gold" />
@@ -104,7 +111,7 @@ export default function Home() {
               <Link href="/groups/join">Join with Code</Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
         {/* Decorative bottom wave */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg
@@ -115,12 +122,12 @@ export default function Home() {
             preserveAspectRatio="none"
           >
             <path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
               className="fill-background"
             />
           </svg>
         </div>
-      </section>
+      </AuroraBackground>
 
       {/* Features Section */}
       <section className="py-20 bg-background">

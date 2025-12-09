@@ -12,15 +12,15 @@ import {
   Users,
   Shuffle,
 } from "lucide-react";
+import { UserProfile } from "@/components/auth/user-profile";
+import { InviteLink } from "@/components/groups/invite-link";
+import { MemberList } from "@/components/groups/member-list";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
-import { MemberList } from "@/components/groups/member-list";
-import { InviteLink } from "@/components/groups/invite-link";
 import { useSession } from "@/lib/auth-client";
-import { UserProfile } from "@/components/auth/user-profile";
 import { formatPrice, formatExchangeDate, daysUntil } from "@/lib/secret-santa";
 import type { Group, Currency } from "@/lib/types";
 
@@ -261,7 +261,7 @@ export default function GroupDashboardPage({
                   className="bg-christmas-red hover:bg-christmas-red/90"
                   asChild
                 >
-                  <Link href={`/groups/${groupId}/assignment`}>
+                  <Link href={`/groups/${groupId}/draw`}>
                     View My Assignment
                   </Link>
                 </Button>
@@ -364,9 +364,9 @@ export default function GroupDashboardPage({
             </CardHeader>
             <CardContent className="space-y-2">
               <Button variant="outline" className="w-full justify-start" asChild>
-                <Link href={`/groups/${groupId}/wishlist`}>
+                <Link href={`/wishlists/${groupId}`}>
                   <Gift className="mr-2 h-4 w-4" />
-                  View Wishlists
+                  My Wishlist
                 </Link>
               </Button>
               {group.drawCompleted && (

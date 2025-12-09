@@ -1,12 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -14,15 +19,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { Textarea } from "@/components/ui/textarea";
 import { SUPPORTED_CURRENCIES, CURRENCY_SYMBOLS } from "@/lib/types";
 import type { Currency } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface GroupFormData {
   name: string;

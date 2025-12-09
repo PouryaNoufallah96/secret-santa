@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState, use, useCallback } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -9,13 +9,13 @@ import {
   Gift,
   User,
 } from "lucide-react";
+import { UserProfile } from "@/components/auth/user-profile";
+import { MessageInput } from "@/components/messages/message-input";
+import { MessageThread } from "@/components/messages/message-thread";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSession } from "@/lib/auth-client";
-import { UserProfile } from "@/components/auth/user-profile";
-import { MessageThread } from "@/components/messages/message-thread";
-import { MessageInput } from "@/components/messages/message-input";
 
 interface Message {
   id: string;
@@ -49,7 +49,7 @@ export default function MessagesPage({
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"santa" | "recipient">("santa");
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     try {
       const res = await fetch(`/api/groups/${groupId}/messages`);
       if (!res.ok) {
@@ -73,12 +73,12 @@ export default function MessagesPage({
     } finally {
       setLoading(false);
     }
-  };
+  }, [groupId]);
 
   useEffect(() => {
     if (!session) return;
     fetchMessages();
-  }, [session, groupId]);
+  }, [session, fetchMessages]);
 
   const handleSendMessage = async (content: string, senderRole: "santa" | "recipient") => {
     try {

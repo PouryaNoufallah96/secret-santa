@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { eq, and, desc } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { giftHistory, group, groupMember, user } from "@/lib/schema";
-import { eq, and, desc } from "drizzle-orm";
-import { headers } from "next/headers";
 
 // GET: Return all archived groups user participated in with gift history
 export async function GET() {

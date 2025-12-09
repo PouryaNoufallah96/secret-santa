@@ -69,7 +69,7 @@ export async function notifyDrawComplete(
     type: "draw_complete",
     title: "Secret Santa Draw Complete!",
     message: `Names have been drawn in ${groupName}. Check out who you got!`,
-    linkUrl: `/groups/${groupId}/assignment`,
+    linkUrl: `/groups/${groupId}/draw`,
     relatedGroupId: groupId,
   });
 }
@@ -87,7 +87,7 @@ export async function notifyAssignmentReady(
     type: "assignment_ready",
     title: "Your Assignment is Ready!",
     message: `You've been assigned someone in ${groupName}. Click to reveal!`,
-    linkUrl: `/groups/${groupId}/assignment`,
+    linkUrl: `/groups/${groupId}/draw`,
     relatedGroupId: groupId,
   });
 }

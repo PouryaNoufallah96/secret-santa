@@ -1,9 +1,9 @@
+import { headers } from "next/headers";
+import { eq } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { userProfile } from "@/lib/schema";
-import { eq } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const updateProfileSchema = z.object({
   bio: z.string().max(500).optional().nullable(),

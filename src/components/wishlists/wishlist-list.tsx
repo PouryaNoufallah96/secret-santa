@@ -1,8 +1,8 @@
 "use client";
 
 import { Gift } from "lucide-react";
-import { WishlistItemCard } from "./wishlist-item-card";
 import type { Currency } from "@/lib/types";
+import { WishlistItemCard } from "./wishlist-item-card";
 
 type Priority = "low" | "medium" | "high";
 

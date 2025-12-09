@@ -1,13 +1,13 @@
-import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
+import { redirect, notFound } from "next/navigation";
 import { ArrowLeft, Gift, DollarSign, Calendar, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { WishlistList } from "@/components/wishlists/wishlist-list";
+import { auth } from "@/lib/auth";
 import { formatPrice, formatExchangeDate, getInitials } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
 
@@ -123,10 +123,10 @@ export default async function RecipientWishlistPage({ params }: PageProps) {
                   Budget:{" "}
                   <span className="font-medium">
                     {groupData.budgetMin && groupData.budgetMax
-                      ? `${formatPrice(groupData.budgetMin * 100, currency)} - ${formatPrice(groupData.budgetMax * 100, currency)}`
+                      ? `${formatPrice(groupData.budgetMin, currency)} - ${formatPrice(groupData.budgetMax, currency)}`
                       : groupData.budgetMin
-                        ? `Min ${formatPrice(groupData.budgetMin * 100, currency)}`
-                        : `Max ${formatPrice(groupData.budgetMax! * 100, currency)}`}
+                        ? `Min ${formatPrice(groupData.budgetMin, currency)}`
+                        : `Max ${formatPrice(groupData.budgetMax!, currency)}`}
                   </span>
                 </span>
               </div>

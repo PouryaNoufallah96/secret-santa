@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Lock, Gift, Users } from "lucide-react";
+import { UserProfile } from "@/components/auth/user-profile";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useSession } from "@/lib/auth-client";
-import { UserProfile } from "@/components/auth/user-profile";
 import { isValidInviteCode } from "@/lib/secret-santa";
 
 function JoinGroupForm() {
@@ -25,6 +25,12 @@ function JoinGroupForm() {
     name: string;
     memberCount: number;
   } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure consistent rendering between server and client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Pre-fill from URL query param
   useEffect(() => {
@@ -101,7 +107,8 @@ function JoinGroupForm() {
     }
   }
 
-  if (isPending) {
+  // Show loading spinner until mounted and session is ready
+  if (!mounted || isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />

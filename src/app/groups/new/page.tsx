@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { GroupForm } from "@/components/groups/group-form";
-import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
+import { GroupForm } from "@/components/groups/group-form";
+import { Button } from "@/components/ui/button";
+import { useSession } from "@/lib/auth-client";
 
 export default function NewGroupPage() {
   const router = useRouter();

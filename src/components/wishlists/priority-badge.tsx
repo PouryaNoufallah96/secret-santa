@@ -1,8 +1,8 @@
 "use client";
 
+import { Star, StarHalf, Circle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Star, StarHalf, Circle } from "lucide-react";
 
 type Priority = "low" | "medium" | "high";
 

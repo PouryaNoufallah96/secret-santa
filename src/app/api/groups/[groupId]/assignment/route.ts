@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { and, eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { assignment, group, groupMember, user } from "@/lib/schema";
-import { and, eq } from "drizzle-orm";
-import { headers } from "next/headers";
 
 export async function GET(
   _request: Request,

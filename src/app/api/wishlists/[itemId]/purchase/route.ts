@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { and, eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { wishlistItem, assignment } from "@/lib/schema";
-import { and, eq } from "drizzle-orm";
-import { headers } from "next/headers";
 
 // Mark an item as purchased or unpurchase it
 export async function POST(

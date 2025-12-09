@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { NotificationDropdown } from "./notification-dropdown";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { NotificationDropdown } from "./notification-dropdown";
 
 interface Notification {
   id: string;

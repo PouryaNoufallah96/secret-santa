@@ -1,10 +1,10 @@
+import { headers } from "next/headers";
+import { eq, and, sql, desc } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { group, groupMember } from "@/lib/schema";
 import { generateInviteCode } from "@/lib/secret-santa";
-import { eq, and, sql, desc } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const createGroupSchema = z.object({
   name: z.string().min(1, "Name is required").max(100, "Name too long"),

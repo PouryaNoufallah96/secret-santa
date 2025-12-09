@@ -1,14 +1,14 @@
+import { headers } from "next/headers";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { eq, desc, sql } from "drizzle-orm";
+import { Bell, CheckCircle, BellOff } from "lucide-react";
+import { NotificationItem } from "@/components/notifications/notification-item";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notification, group } from "@/lib/schema";
-import { eq, desc, sql } from "drizzle-orm";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import { Bell, CheckCircle, BellOff } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { NotificationItem } from "@/components/notifications/notification-item";
 
 async function getNotificationsData(userId: string) {
   const notifications = await db

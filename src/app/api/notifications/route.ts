@@ -1,8 +1,8 @@
+import { headers } from "next/headers";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notification } from "@/lib/schema";
-import { eq, desc, and, sql } from "drizzle-orm";
-import { headers } from "next/headers";
 
 export async function GET(request: Request) {
   const session = await auth.api.getSession({ headers: await headers() });

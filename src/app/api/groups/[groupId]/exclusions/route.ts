@@ -1,9 +1,9 @@
+import { headers } from "next/headers";
+import { and, eq } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { exclusionRule, groupMember, user } from "@/lib/schema";
-import { and, eq } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const createExclusionSchema = z.object({
   excludedUserId: z.string().min(1),

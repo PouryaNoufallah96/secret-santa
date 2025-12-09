@@ -1,9 +1,9 @@
+import { headers } from "next/headers";
+import { eq, and } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { group, groupMember, groupActivity, notification } from "@/lib/schema";
-import { eq, and } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const joinSchema = z.object({
   inviteCode: z.string().length(8, "Invalid invite code"),

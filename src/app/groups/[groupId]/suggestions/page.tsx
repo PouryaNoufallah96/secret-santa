@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Sparkles, Gift } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GetSuggestionsButton } from "@/components/ai/get-suggestions-btn";
 import { SuggestionList } from "@/components/ai/suggestion-list";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPrice, getInitials } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
 
@@ -169,8 +169,8 @@ export default function SuggestionsPage() {
             <div className="text-right">
               <p className="text-sm text-muted-foreground">Budget</p>
               <p className="font-medium">
-                {formatPrice(budgetRange.min * 100, currency)} -{" "}
-                {formatPrice(budgetRange.max * 100, currency)}
+                {formatPrice(budgetRange.min, currency)} -{" "}
+                {formatPrice(budgetRange.max, currency)}
               </p>
             </div>
           </div>

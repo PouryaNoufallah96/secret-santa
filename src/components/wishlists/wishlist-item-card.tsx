@@ -1,17 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { ExternalLink, Trash2, MoreVertical } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,12 +15,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { formatPrice } from "@/lib/secret-santa";
+import type { Currency } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { PriorityBadge } from "./priority-badge";
 import { PurchaseButton } from "./purchase-button";
 import { WishlistForm } from "./wishlist-form";
-import { formatPrice } from "@/lib/secret-santa";
-import { cn } from "@/lib/utils";
-import type { Currency } from "@/lib/types";
 
 type Priority = "low" | "medium" | "high";
 
@@ -109,11 +110,13 @@ export function WishlistItemCard({
           <div className="flex gap-4">
             {/* Image */}
             {item.imageUrl && (
-              <div className="flex-shrink-0">
-                <img
+              <div className="flex-shrink-0 relative w-20 h-20">
+                <Image
                   src={item.imageUrl}
                   alt={item.name}
-                  className="w-20 h-20 object-cover rounded-lg"
+                  fill
+                  className="object-cover rounded-lg"
+                  unoptimized
                 />
               </div>
             )}

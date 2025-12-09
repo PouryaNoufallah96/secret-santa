@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Gift, Users } from "lucide-react";
+import { BookOpen, Gift, Users } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
-import { ModeToggle } from "./ui/mode-toggle";
-import { Button } from "./ui/button";
 import { NotificationBellWrapper } from "./notifications/notification-bell-wrapper";
+import { Button } from "./ui/button";
+import { ModeToggle } from "./ui/mode-toggle";
 
 export function SiteHeader() {
   return (
@@ -43,6 +43,12 @@ export function SiteHeader() {
                 <Link href="/groups" className="flex items-center gap-2">
                   <Users className="h-4 w-4" />
                   My Groups
+                </Link>
+              </Button>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/docs" className="flex items-center gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Docs
                 </Link>
               </Button>
             </div>

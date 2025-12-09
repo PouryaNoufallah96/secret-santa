@@ -1,3 +1,6 @@
+import { headers } from "next/headers";
+import { and, eq, desc } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import {
@@ -7,9 +10,6 @@ import {
   groupMember,
   notification,
 } from "@/lib/schema";
-import { and, eq, desc } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const sendMessageSchema = z.object({
   content: z.string().min(1).max(2000),

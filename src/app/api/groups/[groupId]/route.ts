@@ -1,9 +1,9 @@
+import { headers } from "next/headers";
+import { eq, and, sql } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { group, groupMember, user } from "@/lib/schema";
-import { eq, and, sql } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const updateGroupSchema = z.object({
   name: z.string().min(1).max(100).optional(),

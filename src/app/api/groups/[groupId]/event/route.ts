@@ -1,5 +1,9 @@
+import { headers } from "next/headers";
+import { eq, and } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { notifyEventUpdate } from "@/lib/notifications";
 import {
   eventDetails,
   group,
@@ -8,10 +12,6 @@ import {
   rsvp,
   user,
 } from "@/lib/schema";
-import { notifyEventUpdate } from "@/lib/notifications";
-import { eq, and } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 // Helper to check if user is a member of the group
 async function getMemberRole(groupId: string, userId: string) {

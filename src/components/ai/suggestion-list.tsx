@@ -2,8 +2,8 @@
 
 import { Sparkles, AlertCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { SuggestionCard } from "./suggestion-card";
 import type { Currency } from "@/lib/types";
+import { SuggestionCard } from "./suggestion-card";
 
 interface Suggestion {
   name: string;

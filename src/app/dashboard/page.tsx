@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Lock, Plus, Users, Gift, Calendar, ArrowRight } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
 import { useSession } from "@/lib/auth-client";
 import { formatShortDate, daysUntil, getTimeBasedGreeting } from "@/lib/secret-santa";
@@ -22,6 +22,14 @@ export default function DashboardPage() {
   const { data: session, isPending } = useSession();
   const [groups, setGroups] = useState<GroupWithRole[]>([]);
   const [loadingGroups, setLoadingGroups] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [greeting, setGreeting] = useState("Welcome");
+
+  // Ensure consistent rendering between server and client
+  useEffect(() => {
+    setMounted(true);
+    setGreeting(getTimeBasedGreeting());
+  }, []);
 
   useEffect(() => {
     if (!session) return;
@@ -43,7 +51,8 @@ export default function DashboardPage() {
     fetchGroups();
   }, [session]);
 
-  if (isPending) {
+  // Show loading spinner until mounted and session is ready
+  if (!mounted || isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
         <SnowflakeSpinner size="lg" />
@@ -83,7 +92,7 @@ export default function DashboardPage() {
       {/* Welcome Section */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold font-nunito text-christmas-red dark:text-christmas-gold">
-          {getTimeBasedGreeting()}, {session.user.name?.split(" ")[0]}!
+          {greeting}, {session.user.name?.split(" ")[0]}!
         </h1>
         <p className="text-muted-foreground mt-1">
           Welcome to your Secret Santa dashboard

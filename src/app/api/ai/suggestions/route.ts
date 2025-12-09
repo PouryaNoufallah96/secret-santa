@@ -1,13 +1,13 @@
+import { headers } from "next/headers";
 import { openrouter } from "@openrouter/ai-sdk-provider";
+import { generateText } from "ai";
+import { and, eq, isNull, or } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { assignment, group, userProfile, wishlistItem } from "@/lib/schema";
 import { formatPrice } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
-import { generateText } from "ai";
-import { and, eq, isNull, or } from "drizzle-orm";
-import { headers } from "next/headers";
-import { z } from "zod";
 
 const requestSchema = z.object({
   groupId: z.string().uuid(),
@@ -103,12 +103,12 @@ ${interests.length > 0 ? `Interests: ${interests.join(", ")}` : "Interests: Not 
 
 ${
   wishlistItems.length > 0
-    ? `Items on their wishlist (for reference, DON'T suggest these exact items):
-${wishlistItems.map((item) => `- ${item.name}${item.price ? ` (~${formatPrice(item.price, currency)})` : ""}`).join("\n")}`
+    ? `Items on their wishlist (for reference, use these as inspiration for what they like):
+${wishlistItems.map((item) => `- ${item.name}${item.description ? `: ${item.description}` : ""}${item.price ? ` (~${formatPrice(item.price, currency)})` : ""}`).join("\n")}`
     : "Their wishlist is empty - suggest popular gift ideas based on their interests."
 }
 
-Budget range: ${formatPrice(budgetMin * 100, currency)} - ${formatPrice(budgetMax * 100, currency)}
+Budget range: ${formatPrice(budgetMin, currency)} - ${formatPrice(budgetMax, currency)}
 
 Remember: Return ONLY a valid JSON array with 5 suggestions. Each suggestion should have: name, description, estimatedPrice (number only, no currency symbol), and reasoning.`;
 

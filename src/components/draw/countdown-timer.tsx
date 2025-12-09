@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useSyncExternalStore, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 interface CountdownTimerProps {

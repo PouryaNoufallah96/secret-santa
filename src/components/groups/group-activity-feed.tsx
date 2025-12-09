@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { formatDistanceToNow } from "date-fns";
 import {
   UserPlus,
   Shuffle,
@@ -11,6 +12,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -18,8 +20,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { formatDistanceToNow } from "date-fns";
 
 type ActivityType =
   | "member_joined"
@@ -93,11 +93,7 @@ export function GroupActivityFeed({ groupId }: GroupActivityFeedProps) {
   const [hasMore, setHasMore] = useState(false);
   const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    fetchActivities(0);
-  }, [groupId]);
-
-  async function fetchActivities(newOffset: number) {
+  const fetchActivities = useCallback(async (newOffset: number) => {
     setLoading(true);
     try {
       const res = await fetch(
@@ -120,7 +116,11 @@ export function GroupActivityFeed({ groupId }: GroupActivityFeedProps) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [groupId]);
+
+  useEffect(() => {
+    fetchActivities(0);
+  }, [fetchActivities]);
 
   function loadMore() {
     fetchActivities(offset + 10);

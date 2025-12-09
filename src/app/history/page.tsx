@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { History, Lock, Gift } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
-import { EmptyState } from "@/components/ui/empty-state";
-import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
 import { ExchangeCard } from "@/components/history/exchange-card";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
+import { useSession } from "@/lib/auth-client";
 
 interface GiftInfo {
   toName?: string;

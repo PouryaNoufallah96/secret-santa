@@ -1,8 +1,8 @@
 "use client";
 
 import { Gift, Sparkles, DollarSign } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { formatPrice } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
 

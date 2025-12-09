@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { Gift, Sparkles } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
 import { getInitials, formatPrice } from "@/lib/secret-santa";
 import type { Currency } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface Recipient {
   id: string;
@@ -184,11 +184,11 @@ function RevealedAssignment({
             <span className="text-sm text-muted-foreground">Budget: </span>
             <span className="font-medium">
               {budgetMin && budgetMax
-                ? `${formatPrice(budgetMin * 100, currency)} - ${formatPrice(budgetMax * 100, currency)}`
+                ? `${formatPrice(budgetMin, currency)} - ${formatPrice(budgetMax, currency)}`
                 : budgetMin
-                  ? `Min ${formatPrice(budgetMin * 100, currency)}`
+                  ? `Min ${formatPrice(budgetMin, currency)}`
                   : budgetMax
-                    ? `Max ${formatPrice(budgetMax * 100, currency)}`
+                    ? `Max ${formatPrice(budgetMax, currency)}`
                     : "No budget set"}
             </span>
           </div>
