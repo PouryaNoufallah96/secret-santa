@@ -157,3 +157,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Nunito font utility */
+  .font-nunito {
+    font-family: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Christmas gradient backgrounds */
+  .bg-christmas-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.53 0.22 25) 0%,
+      oklch(0.48 0.19 25) 100%
+    );
+  }
+
+  .bg-christmas-gradient-dark {
+    background: linear-gradient(
+      135deg,
+      oklch(0.18 0.02 280) 0%,
+      oklch(0.20 0.08 155) 100%
+    );
+  }
+
+  /* Festive text gradient */
+  .text-christmas-gradient {
+    background: linear-gradient(
+      90deg,
+      oklch(0.53 0.22 25) 0%,
+      oklch(0.80 0.16 85) 50%,
+      oklch(0.40 0.12 155) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
