@@ -64,7 +64,7 @@ export default function Home() {
     <main className="flex-1 bg-background">
       {/* Hero Section */}
       <AuroraBackground className="min-h-[90vh] relative">
-        <Snowfall count={100} />
+        <Snowfall snowflakeCount={100} />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Lock, Plus, Users, Gift, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Lock, Plus, Users, Gift, Calendar, ArrowRight } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
 import { useSession } from "@/lib/auth-client";
-import { formatShortDate, daysUntil, getTimeBasedGreeting } from "@/lib/secret-santa";
+import { daysUntil, getTimeBasedGreeting } from "@/lib/secret-santa";
 import type { Group } from "@/lib/types";
 import { GroupCard } from "@/components/groups/group-card";
 import { Snowfall } from "@/components/ui/snowfall";
@@ -98,7 +97,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-christmas-red/5 to-transparent -z-10" />
-      <Snowfall className="opacity-50" count={50} />
+      <Snowfall snowflakeCount={50} />
 
       <div className="container mx-auto px-4 py-8 md:py-12 relative z-10">
         {/* Welcome Header */}
