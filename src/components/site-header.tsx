@@ -3,6 +3,7 @@ import { Gift, Users } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
 import { ModeToggle } from "./ui/mode-toggle";
 import { Button } from "./ui/button";
+import { NotificationBellWrapper } from "./notifications/notification-bell-wrapper";
 
 export function SiteHeader() {
   return (
@@ -47,6 +48,7 @@ export function SiteHeader() {
             </div>
           </div>
           <div className="flex items-center gap-4" role="group" aria-label="User actions">
+            <NotificationBellWrapper />
             <UserProfile />
             <ModeToggle />
           </div>
