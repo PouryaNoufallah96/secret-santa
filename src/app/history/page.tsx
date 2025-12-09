@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { History, Lock, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
+import { EmptyState } from "@/components/ui/empty-state";
 import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
 import { ExchangeCard } from "@/components/history/exchange-card";
@@ -59,7 +61,7 @@ export default function HistoryPage() {
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }
@@ -84,7 +86,7 @@ export default function HistoryPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }
@@ -116,17 +118,16 @@ export default function HistoryPage() {
       </div>
 
       {history.length === 0 ? (
-        <div className="text-center py-16">
-          <Gift className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-semibold mb-2">No History Yet</h2>
-          <p className="text-muted-foreground mb-6">
-            Your past Secret Santa exchanges will appear here once groups are
-            archived.
-          </p>
+        <EmptyState
+          icon={Gift}
+          title="No History Yet"
+          description="Your past Secret Santa exchanges will appear here once groups are archived."
+          variant="festive"
+        >
           <Button asChild>
             <Link href="/groups">View Your Groups</Link>
           </Button>
-        </div>
+        </EmptyState>
       ) : (
         <div className="grid gap-6 md:grid-cols-2">
           {history.map((exchange) => (

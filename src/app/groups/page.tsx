@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Plus, Users, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GroupCard } from "@/components/groups/group-card";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
+import { EmptyState } from "@/components/ui/empty-state";
 import { useSession } from "@/lib/auth-client";
 import { UserProfile } from "@/components/auth/user-profile";
 import type { Group } from "@/lib/types";
@@ -43,7 +45,7 @@ export default function GroupsPage() {
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }
@@ -86,7 +88,7 @@ export default function GroupsPage() {
 
       {loading ? (
         <div className="flex justify-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+          <SnowflakeSpinner size="lg" />
         </div>
       ) : error ? (
         <div className="text-center py-12">
@@ -100,13 +102,13 @@ export default function GroupsPage() {
           </Button>
         </div>
       ) : groups.length === 0 ? (
-        <div className="text-center py-12 border border-dashed rounded-lg">
-          <Users className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-semibold mb-2">No groups yet</h2>
-          <p className="text-muted-foreground mb-6">
-            Create your first Secret Santa group or join one with an invite code
-          </p>
-          <div className="flex gap-4 justify-center">
+        <EmptyState
+          icon={Users}
+          title="No groups yet"
+          description="Create your first Secret Santa group or join one with an invite code"
+          variant="festive"
+        >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="bg-christmas-red hover:bg-christmas-red/90">
               <Link href="/groups/new">
                 <Plus className="mr-2 h-4 w-4" />
@@ -117,7 +119,7 @@ export default function GroupsPage() {
               <Link href="/groups/join">Join with Code</Link>
             </Button>
           </div>
-        </div>
+        </EmptyState>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {groups.map((group) => (

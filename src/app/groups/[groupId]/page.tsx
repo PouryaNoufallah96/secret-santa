@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
 import { MemberList } from "@/components/groups/member-list";
 import { InviteLink } from "@/components/groups/invite-link";
 import { useSession } from "@/lib/auth-client";
@@ -81,7 +82,7 @@ export default function GroupDashboardPage({
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }
@@ -106,7 +107,7 @@ export default function GroupDashboardPage({
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }

@@ -7,6 +7,7 @@ import { UserProfile } from "@/components/auth/user-profile";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SnowflakeSpinner } from "@/components/ui/snowflake-spinner";
 import { useSession } from "@/lib/auth-client";
 import { formatShortDate, daysUntil, getTimeBasedGreeting } from "@/lib/secret-santa";
 import type { Group } from "@/lib/types";
@@ -45,7 +46,7 @@ export default function DashboardPage() {
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-christmas-red" />
+        <SnowflakeSpinner size="lg" />
       </div>
     );
   }
@@ -167,7 +168,7 @@ export default function DashboardPage() {
           <CardContent>
             {loadingGroups ? (
               <div className="flex justify-center py-8">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-christmas-red" />
+                <SnowflakeSpinner size="md" />
               </div>
             ) : upcomingExchanges.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
@@ -224,7 +225,7 @@ export default function DashboardPage() {
           <CardContent>
             {loadingGroups ? (
               <div className="flex justify-center py-8">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-christmas-red" />
+                <SnowflakeSpinner size="md" />
               </div>
             ) : pendingDraws.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">

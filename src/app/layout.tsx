@@ -24,36 +24,36 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: {
-    default: "Agentic Coding Boilerplate",
-    template: "%s | Agentic Coding Boilerplate",
+    default: "Secret Santa - Gift Exchange Made Easy",
+    template: "%s | Secret Santa",
   },
   description:
-    "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling - perfect for building AI-powered applications and autonomous agents by Leon van Zyl",
+    "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
   keywords: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "AI",
-    "OpenRouter",
-    "Boilerplate",
-    "Authentication",
-    "PostgreSQL",
+    "Secret Santa",
+    "Gift Exchange",
+    "Christmas",
+    "Holiday",
+    "Wishlist",
+    "Gift Ideas",
+    "AI Suggestions",
+    "Group Gifts",
   ],
   authors: [{ name: "Leon van Zyl" }],
   creator: "Leon van Zyl",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Agentic Coding Boilerplate",
-    title: "Agentic Coding Boilerplate",
+    siteName: "Secret Santa",
+    title: "Secret Santa - Gift Exchange Made Easy",
     description:
-      "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
+      "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Coding Boilerplate",
+    title: "Secret Santa - Gift Exchange Made Easy",
     description:
-      "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
+      "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
   },
   robots: {
     index: true,
@@ -65,10 +65,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Agentic Coding Boilerplate",
+  name: "Secret Santa",
   description:
-    "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
-  applicationCategory: "DeveloperApplication",
+    "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
+  applicationCategory: "SocialApplication",
   operatingSystem: "Any",
   offers: {
     "@type": "Offer",
