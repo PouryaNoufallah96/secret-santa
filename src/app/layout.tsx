@@ -19,18 +19,19 @@ const geistMono = Geist_Mono({
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Secret Santa - Gift Exchange Made Easy",
-    template: "%s | Secret Santa",
+    default: "Sleigh - Modern Gift Exchange & Secret Santa App",
+    template: "%s | Sleigh",
   },
   description:
-    "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
+    "The modern way to organize Secret Santa exchanges. Create groups, manage smart wishlists, and get AI-powered gift suggestions with Sleigh.",
   keywords: [
     "Secret Santa",
+    "Sleigh",
     "Gift Exchange",
     "Christmas",
     "Holiday",
@@ -44,16 +45,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Secret Santa",
-    title: "Secret Santa - Gift Exchange Made Easy",
+    siteName: "Sleigh",
+    title: "Sleigh - Modern Gift Exchange & Secret Santa App",
     description:
-      "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
+      "The modern way to organize Secret Santa exchanges. Create groups, manage smart wishlists, and get AI-powered gift suggestions with Sleigh.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Secret Santa - Gift Exchange Made Easy",
+    title: "Sleigh - Modern Gift Exchange & Secret Santa App",
     description:
-      "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
+      "The modern way to organize Secret Santa exchanges. Create groups, manage smart wishlists, and get AI-powered gift suggestions with Sleigh.",
   },
   robots: {
     index: true,
@@ -65,9 +66,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Secret Santa",
+  name: "Sleigh",
   description:
-    "Create magical gift exchanges with friends, family, and coworkers. Organize Secret Santa draws, manage wishlists, and get AI-powered gift suggestions.",
+    "The modern way to organize Secret Santa exchanges. Create groups, manage smart wishlists, and get AI-powered gift suggestions with Sleigh.",
   applicationCategory: "SocialApplication",
   operatingSystem: "Any",
   offers: {

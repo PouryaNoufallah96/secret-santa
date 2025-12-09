@@ -68,98 +68,127 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --radius: 1rem;
+  /* Warm Cream Background */
+  --background: oklch(0.98 0.01 85);
+  /* Deep Pine Green Text for high contrast but softer than black */
+  --foreground: oklch(0.25 0.05 150);
+  
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
+  --card-foreground: oklch(0.25 0.05 150);
+  
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.25 0.05 150);
+  
+  /* Christmas Red as Primary */
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* Christmas Green as Secondary */
+  --secondary: oklch(0.95 0.03 150); /* Light green tint for backgrounds */
+  --secondary-foreground: oklch(0.35 0.1 150);
+  
+  --muted: oklch(0.96 0.01 85);
+  --muted-foreground: oklch(0.50 0.05 150);
+  
+  --accent: oklch(0.95 0.02 85); /* Warm gold tint */
+  --accent-foreground: oklch(0.25 0.05 150);
+  
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
+  
+  --border: oklch(0.92 0.02 85);
+  --input: oklch(0.92 0.02 85);
+  --ring: oklch(0.55 0.22 25);
+  
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  
+  --sidebar: oklch(0.98 0.01 85);
+  --sidebar-foreground: oklch(0.25 0.05 150);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.95 0.03 150);
+  --sidebar-accent-foreground: oklch(0.35 0.1 150);
+  --sidebar-border: oklch(0.92 0.02 85);
+  --sidebar-ring: oklch(0.55 0.22 25);
 
   /* Christmas colors - Light mode */
-  --christmas-red: oklch(0.53 0.22 25);        /* Vibrant red #D42426 */
-  --christmas-green: oklch(0.40 0.12 155);     /* Deep green #165B33 */
-  --christmas-gold: oklch(0.80 0.16 85);       /* Festive gold #F8B229 */
+  --christmas-red: oklch(0.55 0.22 25);        /* Vibrant red */
+  --christmas-green: oklch(0.42 0.13 150);     /* Deep green */
+  --christmas-gold: oklch(0.82 0.16 85);       /* Festive gold */
   --snow-white: oklch(0.99 0 0);               /* Pure snow white */
-  --ice-blue: oklch(0.87 0.07 230);            /* Soft ice blue #A5D8FF */
-  --holly-green: oklch(0.42 0.13 150);         /* Holly green #146B3A */
-  --berry-red: oklch(0.48 0.19 25);            /* Berry red #BB2528 */
-  --cream: oklch(0.97 0.02 90);                /* Warm cream #FFF8E7 */
-  --night-sky: oklch(0.22 0.02 280);           /* Dark night sky (for reference) */
-  --pine-dark: oklch(0.25 0.08 155);           /* Dark pine (for reference) */
-  --warm-glow: oklch(0.88 0.18 90);            /* Warm glow (for reference) */
+  --ice-blue: oklch(0.87 0.07 230);            /* Soft ice blue */
+  --holly-green: oklch(0.42 0.13 150);         /* Holly green */
+  --berry-red: oklch(0.55 0.20 25);            /* Berry red */
+  --cream: oklch(0.98 0.02 90);                /* Warm cream */
+  --night-sky: oklch(0.22 0.02 280);           /* Dark night sky */
+  --pine-dark: oklch(0.25 0.08 155);           /* Dark pine */
+  --warm-glow: oklch(0.88 0.18 90);            /* Warm glow */
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
+  /* Deep Night Sky Background */
+  --background: oklch(0.15 0.05 260);
+  /* Warm White Text */
+  --foreground: oklch(0.98 0.01 85);
+  
+  /* Slightly Lighter Night Sky for Cards */
+  --card: oklch(0.20 0.05 260);
+  --card-foreground: oklch(0.98 0.01 85);
+  
+  --popover: oklch(0.20 0.05 260);
+  --popover-foreground: oklch(0.98 0.01 85);
+  
+  /* Bright Red for Pop */
+  --primary: oklch(0.60 0.22 25);
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* Deep Pine for Secondary */
+  --secondary: oklch(0.25 0.08 155);
+  --secondary-foreground: oklch(0.90 0.05 150);
+  
+  --muted: oklch(0.25 0.05 260);
+  --muted-foreground: oklch(0.70 0.05 260);
+  
+  --accent: oklch(0.25 0.05 260);
+  --accent-foreground: oklch(0.98 0.01 85);
+  
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  
+  --border: oklch(0.30 0.05 260);
+  --input: oklch(0.30 0.05 260);
+  --ring: oklch(0.60 0.22 25);
+  
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  
+  --sidebar: oklch(0.20 0.05 260);
+  --sidebar-foreground: oklch(0.98 0.01 85);
+  --sidebar-primary: oklch(0.60 0.22 25);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.25 0.05 260);
+  --sidebar-accent-foreground: oklch(0.98 0.01 85);
+  --sidebar-border: oklch(0.30 0.05 260);
+  --sidebar-ring: oklch(0.60 0.22 25);
 
-  /* Christmas colors - Dark mode (adjusted for dark backgrounds) */
-  --christmas-red: oklch(0.60 0.22 25);        /* Brighter red for dark mode */
-  --christmas-green: oklch(0.50 0.14 155);     /* Lighter green for visibility */
-  --christmas-gold: oklch(0.82 0.18 85);       /* Slightly brighter gold */
-  --snow-white: oklch(0.95 0.01 0);            /* Slightly muted white */
-  --ice-blue: oklch(0.75 0.08 230);            /* Dimmer ice blue */
-  --holly-green: oklch(0.52 0.14 150);         /* Brighter holly green */
-  --berry-red: oklch(0.55 0.20 25);            /* Brighter berry red */
-  --cream: oklch(0.90 0.02 90);                /* Muted cream for dark mode */
-  --night-sky: oklch(0.18 0.02 280);           /* Deep night sky #1A1B26 */
-  --pine-dark: oklch(0.20 0.08 155);           /* Dark pine #0D3320 */
-  --warm-glow: oklch(0.88 0.20 90);            /* Warm glow #FFD93D */
+  /* Christmas colors - Dark mode */
+  --christmas-red: oklch(0.65 0.22 25);        
+  --christmas-green: oklch(0.55 0.14 155);     
+  --christmas-gold: oklch(0.85 0.18 85);       
+  --snow-white: oklch(0.95 0.01 0);            
+  --ice-blue: oklch(0.75 0.08 230);            
+  --holly-green: oklch(0.52 0.14 150);         
+  --berry-red: oklch(0.60 0.20 25);            
+  --cream: oklch(0.90 0.02 90);                
+  --night-sky: oklch(0.15 0.05 260);           
+  --pine-dark: oklch(0.20 0.08 155);           
+  --warm-glow: oklch(0.88 0.20 90);            
 }
 
 @layer base {

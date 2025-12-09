@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Gift, Users } from "lucide-react";
+import { BookOpen, Gift, Users, Sparkles } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
 import { NotificationBellWrapper } from "./notifications/notification-bell-wrapper";
 import { Button } from "./ui/button";
@@ -15,48 +15,53 @@ export function SiteHeader() {
       >
         Skip to main content
       </a>
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" role="banner">
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50" role="banner">
         <nav
-          className="container mx-auto px-4 py-4 flex justify-between items-center"
+          className="container mx-auto px-4 h-16 flex justify-between items-center"
           aria-label="Main navigation"
         >
           <div className="flex items-center gap-6">
             <h1 className="text-2xl font-bold">
               <Link
                 href="/"
-                className="flex items-center gap-2 text-christmas-red hover:text-christmas-red/80 transition-colors"
-                aria-label="Secret Santa - Go to homepage"
+                className="flex items-center gap-2 group transition-all"
+                aria-label="Sleigh - Go to homepage"
               >
                 <div
-                  className="flex items-center justify-center w-8 h-8 rounded-lg bg-christmas-red/10"
+                  className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-christmas-red to-berry-red shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
                   aria-hidden="true"
                 >
-                  <Gift className="h-5 w-5" />
+                  <Gift className="h-6 w-6 text-white" />
+                  <div className="absolute -top-1.5 -right-1.5 bg-white rounded-full p-0.5 shadow-sm">
+                     <Sparkles className="h-3 w-3 text-christmas-gold animate-pulse" />
+                  </div>
                 </div>
-                <span className="font-nunito bg-gradient-to-r from-christmas-red to-christmas-green bg-clip-text text-transparent">
-                  Secret Santa
+                <span className="font-nunito font-black text-2xl tracking-tight bg-gradient-to-r from-christmas-red via-christmas-red to-berry-red bg-clip-text text-transparent group-hover:from-christmas-gold group-hover:to-christmas-red transition-all duration-300">
+                  Sleigh
                 </span>
               </Link>
             </h1>
             <div className="hidden md:flex items-center gap-1">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/groups" className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" asChild className="hover:bg-christmas-red/5 hover:text-christmas-red transition-colors rounded-full px-4">
+                <Link href="/groups" className="flex items-center gap-2 font-bold text-muted-foreground hover:text-christmas-red">
                   <Users className="h-4 w-4" />
                   My Groups
                 </Link>
               </Button>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/docs" className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" asChild className="hover:bg-christmas-green/5 hover:text-christmas-green transition-colors rounded-full px-4">
+                <Link href="/docs" className="flex items-center gap-2 font-bold text-muted-foreground hover:text-christmas-green">
                   <BookOpen className="h-4 w-4" />
                   Docs
                 </Link>
               </Button>
             </div>
           </div>
-          <div className="flex items-center gap-4" role="group" aria-label="User actions">
+          <div className="flex items-center gap-3" role="group" aria-label="User actions">
             <NotificationBellWrapper />
-            <UserProfile />
             <ModeToggle />
+            <div className="pl-3 border-l border-border/50">
+               <UserProfile />
+            </div>
           </div>
         </nav>
       </header>
