@@ -1,8 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Mail, Calendar, User, Shield, ArrowLeft, Lock, Smartphone } from "lucide-react";
+import {
+  Mail,
+  Calendar,
+  User,
+  Shield,
+  ArrowLeft,
+  Lock,
+  Smartphone,
+  Sparkles,
+  Plus,
+  X,
+  Gift,
+} from "lucide-react";
 import { toast } from "sonner";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +35,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useSession } from "@/lib/auth-client";
 
@@ -32,6 +45,72 @@ export default function ProfilePage() {
   const [editProfileOpen, setEditProfileOpen] = useState(false);
   const [securityOpen, setSecurityOpen] = useState(false);
   const [emailPrefsOpen, setEmailPrefsOpen] = useState(false);
+
+  // Secret Santa Profile state
+  const [bio, setBio] = useState("");
+  const [interests, setInterests] = useState<string[]>([]);
+  const [newInterest, setNewInterest] = useState("");
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
+
+  // Load profile on mount
+  useEffect(() => {
+    async function loadProfile() {
+      try {
+        const response = await fetch("/api/users/profile");
+        if (response.ok) {
+          const data = await response.json();
+          setBio(data.profile.bio || "");
+          setInterests(data.profile.interests || []);
+        }
+      } catch (error) {
+        console.error("Failed to load profile:", error);
+      } finally {
+        setIsLoadingProfile(false);
+      }
+    }
+
+    if (session) {
+      loadProfile();
+    }
+  }, [session]);
+
+  const handleAddInterest = () => {
+    const trimmed = newInterest.trim();
+    if (trimmed && !interests.includes(trimmed) && interests.length < 20) {
+      setInterests([...interests, trimmed]);
+      setNewInterest("");
+    }
+  };
+
+  const handleRemoveInterest = (interest: string) => {
+    setInterests(interests.filter((i) => i !== interest));
+  };
+
+  const handleSaveProfile = async () => {
+    setIsSavingProfile(true);
+    try {
+      const response = await fetch("/api/users/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bio, interests }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save profile");
+      }
+
+      toast.success("Profile saved!", {
+        description: "Your Secret Santa profile has been updated.",
+      });
+    } catch (error) {
+      toast.error("Failed to save profile", {
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsSavingProfile(false);
+    }
+  };
 
   if (isPending) {
     return (
@@ -57,7 +136,6 @@ export default function ProfilePage() {
 
   const handleEditProfileSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, this would call an API to update the user profile
     toast.info("Profile updates require backend implementation");
     setEditProfileOpen(false);
   };
@@ -116,6 +194,116 @@ export default function ProfilePage() {
               </div>
             </div>
           </CardHeader>
+        </Card>
+
+        {/* Secret Santa Profile Card */}
+        <Card className="border-christmas-red/30">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Gift className="h-5 w-5 text-christmas-red" />
+              Secret Santa Profile
+            </CardTitle>
+            <CardDescription>
+              Help your Secret Santa find the perfect gift by sharing your
+              interests and preferences.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {isLoadingProfile ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-christmas-red" />
+              </div>
+            ) : (
+              <>
+                {/* Bio */}
+                <div className="space-y-2">
+                  <Label htmlFor="bio">About Me</Label>
+                  <Textarea
+                    id="bio"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    placeholder="Tell your Secret Santa a bit about yourself... What do you like? Any hobbies?"
+                    maxLength={500}
+                    rows={3}
+                  />
+                  <p className="text-xs text-muted-foreground text-right">
+                    {bio.length}/500
+                  </p>
+                </div>
+
+                {/* Interests */}
+                <div className="space-y-3">
+                  <Label>Interests</Label>
+                  <p className="text-sm text-muted-foreground">
+                    Add interests that might help your Secret Santa find gift
+                    ideas. These will be used for AI gift suggestions.
+                  </p>
+
+                  {/* Interest tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {interests.map((interest) => (
+                      <Badge
+                        key={interest}
+                        variant="secondary"
+                        className="pl-3 pr-1 py-1"
+                      >
+                        {interest}
+                        <button
+                          onClick={() => handleRemoveInterest(interest)}
+                          className="ml-1 hover:bg-muted rounded-full p-0.5"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* Add new interest */}
+                  <div className="flex gap-2">
+                    <Input
+                      value={newInterest}
+                      onChange={(e) => setNewInterest(e.target.value)}
+                      placeholder="Add an interest (e.g., Reading, Gaming, Cooking)"
+                      maxLength={50}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          handleAddInterest();
+                        }
+                      }}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={handleAddInterest}
+                      disabled={!newInterest.trim() || interests.length >= 20}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {interests.length}/20 interests
+                  </p>
+                </div>
+
+                <Separator />
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Sparkles className="h-4 w-4" />
+                    This info helps generate better AI gift suggestions
+                  </div>
+                  <Button
+                    onClick={handleSaveProfile}
+                    disabled={isSavingProfile}
+                    className="bg-christmas-red hover:bg-christmas-red/90"
+                  >
+                    {isSavingProfile ? "Saving..." : "Save Profile"}
+                  </Button>
+                </div>
+              </>
+            )}
+          </CardContent>
         </Card>
 
         {/* Account Information */}
@@ -177,35 +365,6 @@ export default function ProfilePage() {
                   </div>
                   <Badge variant="outline">Standard</Badge>
                 </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Account Activity */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>
-              Your recent account activity and sessions
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="h-2 w-2 bg-green-500 rounded-full"></div>
-                  <div>
-                    <p className="font-medium">Current Session</p>
-                    <p className="text-sm text-muted-foreground">Active now</p>
-                  </div>
-                </div>
-                <Badge
-                  variant="outline"
-                  className="text-green-600 border-green-600"
-                >
-                  Active
-                </Badge>
               </div>
             </div>
           </CardContent>
